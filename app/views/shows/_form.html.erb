@@ -1,0 +1,36 @@
+<%= form_for show do |f|%>
+
+  <% if show.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(show.errors.count, "error") %>
+        prohibited show from being saved:
+      </h3>
+
+      <ul>
+      <% show.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :req_recording_hours, "How many hours will it take to record this show? (0-200)" %><br>
+    <%= f.number_field :req_recording_hours %>
+  </p>
+  <p>
+    <%= f.label :req_age, "How old do viewers have to be to record this show?" %><br>
+    <%= f.number_field :req_age %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

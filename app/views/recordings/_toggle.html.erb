@@ -1,0 +1,9 @@
+<!-- For toggling active/inactive for recording -->
+
+<%= form_tag recording_path(recording.id), method: "patch" do %>
+    <% if recording.active %>
+        <%= submit_tag "Deactivate Recording" %>
+    <% else %>
+        <%= submit_tag "Activate Recording" %>
+    <% end %>
+<% end %>

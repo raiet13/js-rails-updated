@@ -1,0 +1,7 @@
+<h3>Show All Users</h3>
+
+<ul>
+<% @users.each do |user| %>
+  <li><%= link_to user.name, user_path(user) %> currently has <%= user.num_active_recordings %> active recordings. Their favorite genre is '<%= user.fav_genre %>'.</li>
+<% end %>
+</ul>

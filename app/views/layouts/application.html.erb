@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsTvshowRecordings</title>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <!-- NOTE : Nav for convenience -->
+    <div class="container">
+      <%= link_to "Home", root_path %>
+      <% if session[:user_id] %>
+          <%= link_to "Your Profile", user_path(current_user) %>
+          <%= link_to "Log Out", logout_path %>
+      <% else %>
+        <%= link_to "Log In", login_path %>
+        <%= link_to "Sign Up", signup_path %>
+      <% end %>
+    </div>
+
+    <!-- content -->
+    <div class="container"  role="main">
+      
+      <!-- NOTE : Added for convenience -->
+      <div class="container">
+        <% if flash[:notice] %>
+          <p><div class="notice"><%= flash[:notice] %></div></p>
+        <% end %>
+      </div>
+      
+      <%= yield %>
+      
+    </div>
+    
+  </body>
+</html>

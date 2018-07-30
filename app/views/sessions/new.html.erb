@@ -1,0 +1,16 @@
+
+<h3>Sign In Page</h3>
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+
+  <label for="username">Enter Username:</label>
+    <%= text_field_tag "username" %>
+    <br><br>
+
+  <label for="password">Enter Password:</label>
+    <%= password_field_tag "password" %>
+    <br><br>
+
+  <%= submit_tag 'Sign In Using Local Credentials' %>
+
+<% end %>

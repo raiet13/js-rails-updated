@@ -1,0 +1,49 @@
+<%= form_for user do |f|%>
+
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(user.errors.count, "error") %>
+        prohibited user from being saved:
+      </h3>
+
+      <ul>
+      <% user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :value => default_data["name"] %>
+  </p>
+  <p>
+    <%= f.label :username %><br>
+    <%= f.text_field :username, :value => default_data["username"] %>
+  </p>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </p>
+  <p>
+    <%= f.label :total_recording_hours, "How many hours can you record? (0-200)" %><br>
+    <%= f.number_field :total_recording_hours %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :uid, :value => default_data["uid"] %>
+    <%= f.hidden_field :image, :value => default_data["image"] %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

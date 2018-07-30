@@ -1,0 +1,22 @@
+<h3>User Profile</h3>
+
+<h4>User Information</h4>
+<p>Name: <%= @show_user.name %></p>
+<p>Username: <%= @show_user.username %></p>
+<p>Age: <%= @show_user.age %></p>
+<p>Recording Hours Left: <%= @show_user.current_recording_hours %> of <%= @show_user.total_recording_hours %></p>
+
+<h4>User's Stats</h4>
+<p>Number of Active Recordings: <%= @show_user.num_active_recordings %></p>
+<p>Total Recordings Made: <%= @show_user.num_recordings %></p>
+
+<% if @show_user.id == current_user.id %>
+    <%= link_to "See Your Recordings", recordings_path(@show_user) %><br>
+    <%= link_to "Edit Your Account", edit_user_path(@show_user) %><br><br>
+    <%= form_tag user_path(@show_user.id), method: "delete" do %>
+      <%= submit_tag "Delete Your Account" %>
+    <% end %>
+
+<% else %>
+    <%= link_to "See User's Recordings", recordings_path(@show_user) %><br>
+<% end %>

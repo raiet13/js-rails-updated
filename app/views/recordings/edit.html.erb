@@ -1,0 +1,5 @@
+<h3>Edit Recording</h3>
+
+<p>Show being recorded = <%= @recording.show.name %></p>
+
+<%= render partial: "form", locals: {recording: @recording, show: @recording.show} %>

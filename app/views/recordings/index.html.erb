@@ -1,0 +1,29 @@
+
+<% if @recordings_user %>
+    <h3>All Recordings for <%= @recordings_user.name %></h3>
+<% else %>
+    <h3>See All Recordings</h3>
+<% end %>
+
+<% if @recordings.count == 0 %>
+    <p>User does not have any recordings at this time.</p>
+<% else %>
+    <ul>
+        <% @recordings.each do |recording| %>
+        <p>
+          <li>Recording = <%= link_to recording.name, edit_recording_path(recording) %>
+          <ul>
+            <li>Show = <%= link_to recording.show.name, show_path(recording.show) %></li>
+            <% if !@recordings_user %>
+                <li>User = <%= recording.user.name %></li>
+                <% end %>
+            <li>Active? = <%= recording.active %></li>
+            <% if @recordings_user %>
+                <li><%= render partial: "toggle", locals: {recording: recording} %></li>
+                <% end %>
+            </ul>
+          </li>
+        </p>
+        <% end %>
+    </ul>
+<% end %>

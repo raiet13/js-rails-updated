@@ -1,0 +1,33 @@
+
+<%= form_for recording do |f|%>
+
+  <% if recording.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(recording.errors.count, "error") %>
+        prohibited recording from being saved:
+      </h2>
+
+      <ul>
+      <% recording.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  
+  <p>
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </p>
+  
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :show_id, :value => show.id %>
+
+  <%= f.submit %>
+<% end %>

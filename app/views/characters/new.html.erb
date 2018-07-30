@@ -1,0 +1,5 @@
+<h3>New Character</h3>
+
+<%= link_to "Return to " + @show.name + "'s Page", show_path(@show) %>
+
+<%= render partial: "form", locals: {show: @show, character: @character} %>

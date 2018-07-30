@@ -1,0 +1,33 @@
+
+<p><%= link_to "Return to Shows List", shows_path %></p>
+
+<h3>Show Page for '<%= @show.name %>'</h3>
+
+<p>Name: <%= @show.name %></p>
+<p>Description: <%= @show.description %></p>
+<p>Number of hours required to record show: <%= @show.req_recording_hours %></p>
+<p>Age requirement to record show: <%= @show.req_age %></p>
+<p>Show has <%= @show.characters.count %> characters (by name):</p>
+<ul>
+  <% @show.characters.each do |character| %>
+    <li><%= character.name %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to "See all of show's character information", show_characters_path(@show) %></p>
+
+<% if current_user.shows.include?(@show) %>
+  <p>You have already recorded this show. Would you like to <%= link_to "see your recordings", recordings_path(current_user) %>?</p>
+  
+  <% if current_user.user_recording_show(@show) %>
+    <%= link_to "Add Character to Show", new_show_character_path(@show) %><br>
+    <%= link_to "Edit Show", edit_show_path(@show) %><br>
+  <% end %>
+
+<% else %>
+  <%= link_to "Record this Show", new_recording_path(@show) %>
+<% end %>
+
+
+<p>Show Page last updated on: <%= @show.updated_at %></p>
+<p>Show has been visited <%= @show.show_page_views %> times.</p>
