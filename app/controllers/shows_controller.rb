@@ -6,6 +6,8 @@ class ShowsController < ApplicationController
 
   # Show all shows -- updated for JS
   def index
+    shows = Show.all
+    render json: shows
   end
 
   # New Show
@@ -37,6 +39,7 @@ class ShowsController < ApplicationController
     @show = Show.find(params[:id])
     @show.show_page_views += 1
     @show.save
+    render json: @show
   end
 
   # Edit Show if User has recorded it
