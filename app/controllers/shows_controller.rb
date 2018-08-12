@@ -7,7 +7,10 @@ class ShowsController < ApplicationController
   # Show all shows -- updated for JS
   def index
     shows = Show.all
-    render json: shows
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: shows, status: 200}
+    end
   end
 
   # New Show
