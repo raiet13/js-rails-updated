@@ -20,18 +20,17 @@ Original Rails App/Project
 
 - Next Steps - 
 
-- Log In or Sign Up with Google --> Add sign in with Google (check login or sign up page and use/keep password?)
-
 - Use jQuery/ajax for TV show/characters
-    -> Index Page
-    -> Show Page with "next"
+    -> Index Page -> Click button to render "recorded shows to user page"
+    -> Show Page with "next" (cycle through all shows)
     -> "has_many" == use the TV shows to render new characters without a redirect
-
+        -> Show the characters in a Show AND render new characters w/o redirect
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 - Nice to Haves - 
 
+- Log In or Sign Up with Google --> Add sign in with Google (check login or sign up page and use/keep password?)
 
 
 
