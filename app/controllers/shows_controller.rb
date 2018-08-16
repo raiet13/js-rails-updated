@@ -6,10 +6,10 @@ class ShowsController < ApplicationController
 
   # Show all shows -- updated for JS
   def index
-    shows = Show.all
+    @shows = Show.all
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: shows, status: 200}
+      format.json { render json: @shows, status: 200}
     end
   end
 
@@ -28,7 +28,7 @@ class ShowsController < ApplicationController
       new_show = Show.new(show_params)
       if new_show.save
         flash[:notice] = ""
-        redirect_to show_path(new_show)
+        render json: new_show, status: 201
       else
         flash[:notice] = "Something went wrong during show creation, please try again."
         @show = new_show
