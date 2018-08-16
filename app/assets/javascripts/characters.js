@@ -14,12 +14,12 @@ function attachListeners() {
     $("#next-char").click(nextButtonClick);
 };
 
-// Shuffle between characters in show
+// Shuffle between characters in show -- Get previous character (when applicable)
 function previousButtonClick(){
     console.log('Render Previous Character Page');
 };
 
-// Shuffle between characters in show
+// Shuffle between characters in show -- Get next character (when applicable)
 function nextButtonClick(){
     console.log('Render Next Character Page');
 };

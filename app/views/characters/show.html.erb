@@ -2,18 +2,18 @@
   <%= javascript_include_tag 'characters' %>
 <% end %>
 
-<h3>Show Page for '<%= @character.name %>'</h3>
+<h3>Show Page for '<span><%= @character.name %></span>'</h3>
 
-<button id="previous-char">Previous Character</button>
-<button id="next-char">Next Character</button>
+<button id="previous-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Previous Character</button>
+<button id="next-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Next Character</button>
 
-<p>Name: <%= @character.name %></p>
-<p>Role: <%= @character.role %></p>
-<p>Description: <%= @character.description %></p>
-<p>Affiliated Show: <%= link_to @character.show.name, show_path(@character.show) %></p>
+<p>Name: <span id="name-<%= @character.id %>"><%= @character.name %></span></p>
+<p>Role: <span id="role-<%= @character.id %>"><%= @character.role %></span></p>
+<p>Description: <span id="description-<%= @character.id %>"><%= @character.description %></span></p>
+<p>Affiliated Show: <span id="show-<%= @character.id %>"><%= link_to @character.show.name, show_path(@character.show) %></span></p>
 
 <p><%= link_to "Edit Character", edit_show_character_path(@character.show, @character) %></p>
 <p><%= render partial: "delete", locals: {character: @character} %></p>
 
-<p>Character last updated on: <%= @character.updated_at %></p>
-<p>Character has been viewed <%= @character.char_page_views %> times.</p>
+<p>Character last updated on: <span id="last-updated-<%= @character.id %>"><%= @character.updated_at %></span></p>
+<p>Character has been viewed <span id="last-viewed-<%= @character.id %>"><%= @character.char_page_views %></span> times.</p>
