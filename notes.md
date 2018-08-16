@@ -25,7 +25,7 @@ Original Rails App/Project
 
 - Use jQuery/ajax for TV show/characters
     -> Show Page with "next" (cycle through all shows)
-    -> Index Page -> Automatically render all characters from show
+    -> Index Page -> Automatically render all characters from show && click button to show all active user recordings on user profile
     -> "has_many" == use the TV shows to render new characters without a redirect
         -> Show the characters in a Show AND render new characters w/o redirect
 
