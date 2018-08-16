@@ -24,8 +24,8 @@ Original Rails App/Project
     -> Tried doing the "content_for" and adding the individual js file to the precompile
 
 - Use jQuery/ajax for TV show/characters
-    -> Index Page -> Click button to render "recorded shows to user page"
     -> Show Page with "next" (cycle through all shows)
+    -> Index Page -> Automatically render all characters from show
     -> "has_many" == use the TV shows to render new characters without a redirect
         -> Show the characters in a Show AND render new characters w/o redirect
 
