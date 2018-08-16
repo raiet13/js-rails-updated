@@ -38,6 +38,9 @@ Original Rails App/Project
 
 - Log In or Sign Up with Google --> Add sign in with Google (check login or sign up page and use/keep password?)
 
-- Character Show Page -- Delete button on "next" not removing original form for some reason, not sure why -- check in/ask reviewer about it (moving on as it isn't directly part of the spec requirements and is taking a while to deal with)
+- Character Show Page 
+-> Delete button on "next" not removing original form for some reason, not sure why -- check in/ask reviewer about it (moving on as it isn't directly part of the spec requirements and is taking a while to deal with)
+-> Next/Previous able to handle randomly removed characters (will need to reconfigure the functions to remove the previous/next and handle all logic in the button click)
+
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

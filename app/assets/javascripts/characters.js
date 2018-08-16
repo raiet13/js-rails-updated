@@ -1,7 +1,12 @@
  /* global $ jQuery */
+ 
+ let characterList;
 
 $(document).ready(function(){
     console.log('Character Controller Page');
+
+    
+    characterList = [];
     attachListeners();
 });
 
@@ -9,30 +14,59 @@ $(document).ready(function(){
 function attachListeners() {
     console.log('Add click listeners');
     
-    // Add button event listeners
-    // $("#previous-char").click(previousButtonClick);
-    // $("#next-char").click(nextButtonClick);
+    // Add button event listener
     $("button").click(buttonClick);
 };
 
-// Temp button info to get "what was clicked"
+// Main Button Click Function
 function buttonClick(){
-    console.log('Button clicked');
-    console.log('Current data = ', this);
-    const id = $(this).data("id");
-    const showId = $(this).data("show_id");
-    console.log(`Character id : ${id} | Show id : ${showId}`);
+    // console.log('Button clicked');
+    // console.log('Current data = ', this);
+    // console.log(`Character id : ${id} | Show id : ${showId}`);
     console.log('Clicked button : ', event.target.id);
     
-    // Check if next is possible (otherwise alert)
+    // Set (or 'clear') variables for current instance of function
+    const id = $(this).data("id");
+    const showId = $(this).data("show_id");
+    const clickedButton = event.target.id;
+    const charData = this;
+    characterList.length = 0;
     
+    // Get list of characters in Show to check if next or previous is possible (otherwise alert)
+     $.getJSON("/shows/" + showId, function(data) {
+         console.log('Show data = ', data);
+         data["characters"].forEach(function( char ) {
+            console.log("char = ", char);
+            characterList.push(char.id);
+        });
+     }).done(function() {
+        console.log("character list = ", characterList)
+        const charIndex = characterList.indexOf(id);
+        console.log('Id is in index position : ', characterList.indexOf(id), ' | Length = ', characterList.length, ' | CharIndex = ', charIndex);
 
-    // Call the correct button functionality
-    if (event.target.id === 'previous-char') {
-        previousButtonClick(this);
-    } else if (event.target.id === 'next-char') {
-        nextButtonClick(this);
-    };
+        // Check if next or previous is possible (otherwise alert)
+        if (characterList.includes(id)) {
+            console.log('Allow click - ', clickedButton);
+            // Call the correct button functionality
+            if (clickedButton === 'previous-char') {
+                if (charIndex === 0) {
+                    console.log('Show Alert');
+                    alert('There are no more characters to display in this direction.');
+                    return;
+                } else {
+                    previousButtonClick(charData);
+                };
+            } else if (clickedButton === 'next-char') {
+                if (charIndex === characterList.length - 1) {
+                    console.log('Show Alert');
+                    alert('There are no more characters to display in this direction.');
+                    return;
+                } else {
+                    nextButtonClick(charData);
+                };
+            };
+        };
+    });
 };
 
 // Shuffle between characters in show -- Get previous character (when applicable)
@@ -59,7 +93,7 @@ function nextButtonClick(buttonInfo){
     getReplaceCharacterData(nextId);
 };
 
-// Get Character JSON Data and Replace in Character Show View
+// Get Character JSON Data and Replace in Character Show View -- ***** WIP delete div issue
 function getReplaceCharacterData(id) {
     $.getJSON("/characters/" + id, function(data) {
         console.log('Next Character Data = ', data);
