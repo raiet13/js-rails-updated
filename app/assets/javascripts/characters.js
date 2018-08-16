@@ -8,7 +8,7 @@ $(document).ready(function(){
     // Reset variables/interactables on page load
     characterList = [];
     $(".show-characters").empty();
-    // document.getElementById("show-char-index-button").style.display = "block";
+    document.getElementById("show-char-index-button").style.display = "block";
 
     // Attach Event Listeners
     attachListeners();
@@ -25,6 +25,7 @@ function attachListeners() {
 
 /* *** CHARACTER INDEX PAGE FUNCTIONALITY *** */
 
+// Show index list of characters for show (on button click)
 function showCharacterIndex(){
     console.log("Show index of show's characters");
 
@@ -33,15 +34,14 @@ function showCharacterIndex(){
 
     // Get list of characters in Show to check if next or previous is possible (otherwise alert)
      $.getJSON("/shows/" + id, function(data) {
-         console.log('Show data = ', data);
+        //  console.log('Show data = ', data);
          
          // Hide the button once used
-        //  document.getElementById("show-char-index-button").style.display = "none";
-    $(".show-characters").empty();
+         document.getElementById("show-char-index-button").style.display = "none";
 
         // Append data to page
          data["characters"].forEach(function( char ) {
-            console.log("char = ", char);
+            // console.log("char = ", char);
             const charData = `
                 <li>Name : <a href="/characters/${char["id"]}">${char["name"]}</a></li>
                 <ul> 
@@ -55,7 +55,6 @@ function showCharacterIndex(){
         });
      });
 };
-
 
 
 /* *** CHARACTER SHOW PAGE FUNCTIONALITY *** */
