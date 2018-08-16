@@ -4,7 +4,7 @@ $(document).ready(function(){
     console.log('Show Index Page');
 
     // Automatically display shows
-    getShows();
+    // getShows();
     
     // Attach Event Listeners
     

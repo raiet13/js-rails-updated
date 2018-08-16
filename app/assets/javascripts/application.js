@@ -14,5 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 // require_tree . <<-- Note : Had stuff I didn't use???
-//= require shows
-//= require users
