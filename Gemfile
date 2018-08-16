@@ -32,7 +32,7 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 
 # Serializer
-gem 'active_model_serializers', '0.10.6'
+gem 'active_model_serializers'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
