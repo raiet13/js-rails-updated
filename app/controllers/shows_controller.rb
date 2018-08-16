@@ -42,7 +42,10 @@ class ShowsController < ApplicationController
     @show = Show.find(params[:id])
     @show.show_page_views += 1
     @show.save
-    render json: @show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @show, status: 200}
+    end
   end
 
   # Edit Show if User has recorded it

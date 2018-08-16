@@ -20,9 +20,6 @@ Original Rails App/Project
 
 - Next Steps - 
 
-- JS files not being captured/run by pages... Do I really have to use the coffeescript files?
-    -> Tried doing the "content_for" and adding the individual js file to the precompile
-
 - Use jQuery/ajax for TV show/characters
     -> Show Page with "next" (cycle through all shows)
     -> Index Page -> Automatically render all characters from show && click button to show all active user recordings on user profile
