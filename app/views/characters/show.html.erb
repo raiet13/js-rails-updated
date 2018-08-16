@@ -7,13 +7,13 @@
 <button id="previous-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Previous Character</button>
 <button id="next-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Next Character</button>
 
-<p>Name: <span id="char-name"><%= @character.name %></span></p>
-<p>Role: <span id="char-role"><%= @character.role %></span></p>
-<p>Description: <span id="char-description"><%= @character.description %></span></p>
-<p>Affiliated Show: <span id="char-show"><%= link_to @character.show.name, show_path(@character.show) %></span></p>
+<p>Name: <span class="char-name"><%= @character.name %></span></p>
+<p>Role: <span class="char-role"><%= @character.role %></span></p>
+<p>Description: <span class="char-description"><%= @character.description %></span></p>
+<p>Affiliated Show: <span class="char-show"><%= link_to @character.show.name, show_path(@character.show) %></span></p>
 
-<p id="char-edit"><%= link_to "Edit Character", edit_show_character_path(@character.show, @character) %></p>
-<p id="char-delete"><%= render partial: "delete", locals: {character: @character} %></p>
+<p class="char-edit"><%= link_to "Edit Character", edit_show_character_path(@character.show, @character) %></p>
+<p class="char-delete"><%= render partial: "delete", locals: {character: @character} %></p>
 
-<p>Character last updated on: <span id="char-last-updated"><%= @character.updated_at %></span></p>
-<p>Character has been viewed <span id="char-last-viewed"><%= @character.char_page_views %></span> times.</p>
+<p>Character last updated on: <span class="char-last-updated"><%= @character.updated_at %></span></p>
+<p>Character has been viewed <span class="char-last-viewed"><%= @character.char_page_views %></span> times.</p>
