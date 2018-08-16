@@ -1,7 +1,12 @@
  /* global $ jQuery */
+ 
+ let showChar = false;
 
 $(document).ready(function(){
     console.log('Show Controller Page');
+
+    // Set variables and reset state
+    showChar = false;
 
     // Attach Event Listeners
     attachListeners();
@@ -13,7 +18,8 @@ function attachListeners() {
     console.log('Add click listeners');
     
     // Form Event Listener
-    $('form').addEventListener("submit", formSubmit);
+    $('form').submit(formSubmit);
+    $('.show-page-char-click').click(getCharacters);
 
 };
 
@@ -41,46 +47,31 @@ function formSubmit(event) {
             `;
         };
         
-        // const newShow = `
-        //     <li><a href="shows/${show["id"]}">${show["name"]}</a></li>
-        //     <ol>
-        //       <li>Has ${show["name"]["characters"].length} characters.</li>
-        //       <li>Age requirement is ${show["req_age"]}.</li>
-        //       <li>Takes ${show["req_recording_hours"]} recording hours.</li>
-        //       <li>You are currently not recording this show.
-        //       </li>
-        //     </ol>
-        //     `;
-        
         $('#all-shows').append(show.info);
     });
 };
 
-// Get list of shows and propogate index page with them
-function getShows(){
-    console.log("Get Shows");
-
-    // Empty div for get response
-    $('#all-shows').empty();
-    $.get( "/shows.json", function( shows ) {
-        const showList = shows.data;
-        console.log('Show data : ', showList);
-
-        // showList.forEach(function(show) {
-        //     let showData = `<ul id="show-${show.id}">
-        //         <li><%= link_to ${show.name}, show_path(${show.id}) %></li>
-        //         <ol>
-        //           <li>Has <%= ${show.characters.count} %> characters.</li>
-        //           <li>Age requirement is <%= ${show.req_age} %>.</li>
-        //           <li>Takes <%= ${show.req_recording_hours} %> recording hours.</li>
-        //           <li>You are currently 
-        //             <% if !current_user.user_recording_show(show) %> not <% end %>
-        //             recording this show.
-        //           </li>
-        //         </ol>
-        //     </ul>`;
-        //     $("#all-shows").append( showData );
-        // });
-    });
+// Get show characters
+function getCharacters(){
+    console.log("Get characters");
+    
+    // Get id and Empty div for get response
+    const id = $(this).data("id");
+    $('#show-characters').empty();
+    if (showChar === true) {
+      return showChar = false;  
+    } else {
+        $.getJSON( "/shows/" + id, function( data ) {
+            console.log('Show data : ', data);
+            const characters = data["characters"];
+    
+            characters.forEach(function(char) {
+                const listItem = `<li><a href="/characters/${char.id}">${char.name}</a></li>`;
+                $("#show-characters").append(listItem);
+            });
+        }).done(function(){
+            return showChar = true;
+        });
+    };
 };
 

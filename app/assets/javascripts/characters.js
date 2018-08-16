@@ -8,8 +8,10 @@ $(document).ready(function(){
     // Reset variables/interactables on page load
     characterList = [];
     $(".show-characters").empty();
-    document.getElementById("show-char-index-button").style.display = "block";
-
+    if (document.getElementById("show-char-index-button")) {
+        document.getElementById("show-char-index-button").style.display = "block";
+    };
+        
     // Attach Event Listeners
     attachListeners();
 });
@@ -36,8 +38,10 @@ function showCharacterIndex(){
      $.getJSON("/shows/" + id, function(data) {
         //  console.log('Show data = ', data);
          
-         // Hide the button once used
-         document.getElementById("show-char-index-button").style.display = "none";
+         // Hide the button once used (if the element exists on the page)
+        if (document.getElementById("show-char-index-button")) {
+            document.getElementById("show-char-index-button").style.display = "none";
+        };
 
         // Append data to page
          data["characters"].forEach(function( char ) {
