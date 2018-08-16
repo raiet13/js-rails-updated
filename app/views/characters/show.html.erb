@@ -1,13 +1,18 @@
-
+<% content_for :js do %>
+  <%= javascript_include_tag 'characters' %>
+<% end %>
 
 <h3>Show Page for '<%= @character.name %>'</h3>
+
+<button id="previous-char">Previous Character</button>
+<button id="next-char">Next Character</button>
 
 <p>Name: <%= @character.name %></p>
 <p>Role: <%= @character.role %></p>
 <p>Description: <%= @character.description %></p>
 <p>Affiliated Show: <%= link_to @character.show.name, show_path(@character.show) %></p>
 
-<p><%= link_to "Edit", edit_show_character_path(@character.show, @character) %></p>
+<p><%= link_to "Edit Character", edit_show_character_path(@character.show, @character) %></p>
 <p><%= render partial: "delete", locals: {character: @character} %></p>
 
 <p>Character last updated on: <%= @character.updated_at %></p>
