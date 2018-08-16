@@ -4,8 +4,8 @@
 
 <h3>Show Page for '<span class="char-header"><%= @character.name %></span>'</h3>
 
-<button id="previous-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Previous Character</button>
-<button id="next-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Next Character</button>
+<button class="char-show-page" id="previous-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Previous Character</button>
+<button class="char-show-page" id="next-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Next Character</button>
 
 <p>Name: <span class="char-name"><%= @character.name %></span></p>
 <p>Role: <span class="char-role"><%= @character.role %></span></p>

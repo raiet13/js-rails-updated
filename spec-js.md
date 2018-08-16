@@ -2,8 +2,8 @@
 
 Specs:
 - [x] Use jQuery for implementing new requirements
-- [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend. <- show show page serialized (use jQuery to move between shows)
-- [ ] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. <- character index page serialized per show && show index of active user recordings on user profile page
+- [x] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend. <- character show page serialized (use jQuery to move between characters belonging to a specific show)
+- [x] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend. <- character index page serialized per show
 - [ ] Include at least one has_many relationship in information rendered via JSON and appended to the DOM. <- character index information rendered via JSON to Show show page
 - [ ] Use your Rails API and a form to create a resource and render the response without a page refresh. <- create new characters through Show show page without page refresh
 - [ ] Translate JSON responses into js model objects.

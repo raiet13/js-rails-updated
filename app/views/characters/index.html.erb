@@ -1,16 +1,13 @@
+<% content_for :js do %>
+  <%= javascript_include_tag 'characters' %>
+<% end %>
 
 <p><%= link_to "Return to Show Page", show_path(@show) %></p>
 
 <h3>Show All Characters for Show <%= @show.name %></h3>
 
-<ul>
-  <% @show.characters.each do |character| %>
-    <li>Name : <%= link_to character.name, character_path(character) %></li>
-    <ul>
-      <li>Role : <%= character.role %></li>
-      <li>Description : <%= character.description %></li>
-      <li><%= link_to "Edit", edit_show_character_path(@show, character) %></li>
-      <li><%= render partial: "delete", locals: {character: character} %></li>
-    </ul>
-  <% end %>
+<button class="char-index-page" data-id="<%= @show.id %>" id="show-char-index-button">Show Characters</button>
+
+<ul class="show-characters">
+  
 </ul>
