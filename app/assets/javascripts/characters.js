@@ -25,6 +25,7 @@ function buttonClick(){
     console.log('Clicked button : ', event.target.id);
     
     // Check if next is possible (otherwise alert)
+    
 
     // Call the correct button functionality
     if (event.target.id === 'previous-char') {
@@ -42,35 +43,8 @@ function previousButtonClick(buttonInfo){
     const previousId = parseInt($(buttonInfo).data("id")) - 1;
     const showId = $(buttonInfo).data("show_id");
     
-    $.getJSON("/characters/" + previousId, function(data) {
-        console.log('Next Character Data = ', data);
-    
-        // Replace the current character data -- Basic text replacements
-        $(".char-header").text(data["name"]);
-        $(".char-name").text(data["name"]);
-        $(".char-role").text(data["role"]);
-        $(".char-description").text(data["description"]);
-        $(".char-last-updated").text(data["last-updated"]);
-        $(".char-page-views").text(data["char_page_views"]);
-        
-        // Replace the current character data -- Functionality replacements requiring different handling
-        $(".char-show").empty();
-        $(".char-edit").empty();
-        $(".char-delete").empty();
-        console.log('Delete div = ', $(".char-delete"));
-        const charShowLink = `<a href="/shows/${data["show"]["id"]}">${data["show"]["name"]}</a>`;
-        const charEditLink = `<a href="/shows/${data["show"]["id"]}/characters/${data["id"]}/edit">Edit Character</a>`;
-        const charDeleteLink = `<form action="/characters/${data["id"]}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="7V3GIg3BguJ2/bRRNJQfQw2HUwm4tU+YJoe1a6kYoLS1rZdhrigk6TUA9EaD9OHloH4bliT7wjfblyplknDnqQ==">
-            <input type="submit" name="commit" value="Delete Character">
-            </form>`;
-        $(".char-show").append(charShowLink);
-        $(".char-edit").append(charEditLink);
-        $(".char-delete").append(charDeleteLink);
-        
-        // Reset the button submittable ids
-        $("#previous-char").data("id", data["id"]);
-        $("#next-char").data("id", data["id"]);
-    });
+    // Get Character JSON Data and Replace in Character Show View
+    getReplaceCharacterData(previousId);
 };
 
 // Shuffle between characters in show -- Get next character (when applicable)
@@ -81,7 +55,13 @@ function nextButtonClick(buttonInfo){
     const nextId = parseInt($(buttonInfo).data("id")) + 1;
     const showId = $(buttonInfo).data("show_id");
     
-    $.getJSON("/characters/" + nextId, function(data) {
+    // Get Character JSON Data and Replace in Character Show View
+    getReplaceCharacterData(nextId);
+};
+
+// Get Character JSON Data and Replace in Character Show View
+function getReplaceCharacterData(id) {
+    $.getJSON("/characters/" + id, function(data) {
         console.log('Next Character Data = ', data);
     
         // Replace the current character data -- Basic text replacements
@@ -96,7 +76,7 @@ function nextButtonClick(buttonInfo){
         $(".char-show").empty();
         $(".char-edit").empty();
         $(".char-delete").empty();
-        console.log('Delete div = ', $(".char-delete"));
+        // console.log('Delete div = ', $(".char-delete")); // ****** WIP duplicated for some reason
         const charShowLink = `<a href="/shows/${data["show"]["id"]}">${data["show"]["name"]}</a>`;
         const charEditLink = `<a href="/shows/${data["show"]["id"]}/characters/${data["id"]}/edit">Edit Character</a>`;
         const charDeleteLink = `<form action="/characters/${data["id"]}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="7V3GIg3BguJ2/bRRNJQfQw2HUwm4tU+YJoe1a6kYoLS1rZdhrigk6TUA9EaD9OHloH4bliT7wjfblyplknDnqQ==">
@@ -110,5 +90,5 @@ function nextButtonClick(buttonInfo){
         $("#previous-char").data("id", data["id"]);
         $("#next-char").data("id", data["id"]);
     });
-
+    
 };
