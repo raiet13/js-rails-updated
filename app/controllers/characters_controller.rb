@@ -6,6 +6,10 @@ class CharactersController < ApplicationController
   # Show more detailed information for a show's characters
   def index
     @show = Show.find(params[:show_id])
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @show, status: 200}
+    end
   end
 
   # New Character
