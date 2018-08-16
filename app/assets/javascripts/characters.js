@@ -32,4 +32,24 @@ function previousButtonClick(){
 // Shuffle between characters in show -- Get next character (when applicable)
 function nextButtonClick(){
     console.log('Render Next Character Page');
+    
+    // Check if next is possible (otherwise alert)
+    
+    // Get id of next character and current show id
+    const nextId = parseInt($(this).data("id")) + 1;
+    const showId = $(this).data("show_id");
+    
+    $.getJSON("/characters/" + nextId, function(data) {
+        console.log('Next Character Data = ', data);
+    
+        // Replace the current character data
+        // $(".authorName").text(data["author"]["name"]);
+        // $(".postTitle").text(data["title"]);
+        // $(".postBody").text(data["description"]);
+        
+        // // Reset the button submittable ids
+        // $("#previous-char").attr("data-id", data["id"]);
+        // $("#next-char").attr("data-id", data["id"]);
+    });
+
 };

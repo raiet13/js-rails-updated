@@ -29,6 +29,8 @@ Original Rails App/Project
 - For complexity's sake in terms of views, updating above
     -> Show Page with "next" (cycle through all CHARACTERS in a Show)
     -> Create new Characters on the show character index page without refresh (shows/:show_id/characters)
+    -> Click "See all of show's character information" link/button on Show Page and render all characters there
+        https://learn.co/tracks/full-stack-web-development-v6/rails-and-javascript/using-ajax-and-rails/video-review-loading-comments-via-get-ajax
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
