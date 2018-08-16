@@ -27,17 +27,32 @@ function formSubmit(event) {
     const values = $(this).serialize();
     $.post('/shows', values).done(function(data) {
         console.log(data);
-        const newShow = `
-            <li><a href="shows/${data["id"]}">${data["name"]}</a></li>
+        const show = data;
+        show.info = function() {
+            return `
+            <li><a href="shows/${this.id}">${this.name}</a></li>
             <ol>
-              <li>Has ${data["name"]["characters"].length} characters.</li>
-              <li>Age requirement is ${data["req_age"]}.</li>
-              <li>Takes ${data["req_recording_hours"]} recording hours.</li>
+              <li>Has ${this.characters.length} characters.</li>
+              <li>Age requirement is ${this.req_age}.</li>
+              <li>Takes ${this.req_recording_hours} recording hours.</li>
               <li>You are currently not recording this show.
               </li>
             </ol>
             `;
-        $('#all-shows').append(newShow);
+        };
+        
+        // const newShow = `
+        //     <li><a href="shows/${show["id"]}">${show["name"]}</a></li>
+        //     <ol>
+        //       <li>Has ${show["name"]["characters"].length} characters.</li>
+        //       <li>Age requirement is ${show["req_age"]}.</li>
+        //       <li>Takes ${show["req_recording_hours"]} recording hours.</li>
+        //       <li>You are currently not recording this show.
+        //       </li>
+        //     </ol>
+        //     `;
+        
+        $('#all-shows').append(show.info);
     });
 };
 
