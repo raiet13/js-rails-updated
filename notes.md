@@ -26,6 +26,10 @@ Original Rails App/Project
     -> "has_many" == use the TV shows to render new characters without a redirect
         -> Show the characters in a Show AND render new characters w/o redirect
 
+- For complexity's sake in terms of views, updating above
+    -> Show Page with "next" (cycle through all CHARACTERS in a Show)
+    -> Create new Characters on the show character index page without refresh (shows/:show_id/characters)
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 - Nice to Haves - 
