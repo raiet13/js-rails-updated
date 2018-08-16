@@ -5,7 +5,6 @@ $(document).ready(function(){
 
     // Attach Event Listeners
     attachListeners();
-    
 
 });
 
