@@ -20,21 +20,30 @@ class ShowsController < ApplicationController
 
   # Create only if show doesn't exist
   def create
-    show = Show.find_by(name: params[:name])
-    if show
-      flash[:notice] = "The show you attempted to create already exists."
-      redirect_to show_path(show)
-    else
-      new_show = Show.new(show_params)
-      if new_show.save
-        flash[:notice] = ""
-        render json: new_show, status: 201
-      else
-        flash[:notice] = "Something went wrong during show creation, please try again."
-        @show = new_show
-  			render :new
-      end
-    end
+    # show = Show.find_by(name: params[:name])
+    new_show = Show.create(show_params)
+    render json: new_show, status: 201
+
+    
+    # puts "create show route"
+    # if show
+    #   puts "show exists!"
+    #   flash[:notice] = "The show you attempted to create already exists."
+    #   redirect_to show_path(show)
+    # else
+    #   puts "create new show"
+    #   new_show = Show.new(show_params)
+    #   if new_show.save
+    #     puts "show created successfully!!"
+    #     flash[:notice] = ""
+    #     render json: new_show, status: 201
+    #   else
+    #     puts "show error"
+    #     flash[:notice] = "Something went wrong during show creation, please try again."
+    #     @show = new_show
+  		# 	render :new
+    #   end
+    # end
   end
 
   # Show Profile

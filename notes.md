@@ -44,6 +44,8 @@ Original Rails App/Project
 - Character Index Page
     -> Button only works one time and requires page refresh. Not sure why that is... -- moving on for now
 
+- Show Index Page
+    -> Be able to tick a checkbox for "record this show" upon jQuery creation of it
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 

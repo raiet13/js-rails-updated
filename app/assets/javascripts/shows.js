@@ -30,33 +30,19 @@ function formSubmit(event) {
     
     createShow.done(function(data) {
         console.log(data);
-        // const newShow = `
-        //     <li><%= link_to show.name, show_path(show) %></li>
-        //     <ol>
-        //       <li>Has <%= show.characters.count %> characters.</li>
-        //       <li>Age requirement is <%= show.req_age %>.</li>
-        //       <li>Takes <%= show.req_recording_hours %> recording hours.</li>
-        //       <li>You are currently 
-        //         <% if !current_user.user_recording_show(show) %> not <% end %>
-        //         recording this show.
-        //       </li>
-        //     </ol>
-        //     `;
-        // $('#all-shows').append(newShow);
+        const newShow = `
+            <li><a href="shows/${data["id"]}">${data["name"]}</a></li>
+            <ol>
+              <li>Has ${data["name"]["characters"].length} characters.</li>
+              <li>Age requirement is ${data["req_age"]}.</li>
+              <li>Takes ${data["req_recording_hours"]} recording hours.</li>
+              <li>You are currently not recording this show.
+              </li>
+            </ol>
+            `;
+        $('#all-shows').append(newShow);
     });
 };
-
-    // <li><%= link_to show.name, show_path(show) %></li>
-    // <ol>
-    //   <li>Has <%= show.characters.count %> characters.</li>
-    //   <li>Age requirement is <%= show.req_age %>.</li>
-    //   <li>Takes <%= show.req_recording_hours %> recording hours.</li>
-    //   <li>You are currently 
-    //     <% if !current_user.user_recording_show(show) %> not <% end %>
-    //     recording this show.
-    //   </li>
-    // </ol>
-
 
 // Get list of shows and propogate index page with them
 function getShows(){
