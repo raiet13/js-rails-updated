@@ -38,6 +38,10 @@ class CharactersController < ApplicationController
   # Show Character
   def show
     @character = Character.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @character, status: 200}
+    end
   end
 
   # Edit character
