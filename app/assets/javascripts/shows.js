@@ -25,9 +25,7 @@ function formSubmit(event) {
     event.preventDefault();
     
     const values = $(this).serialize();
-    const createShow = $.post('/shows', values);
-    
-    createShow.done(function(data) {
+    $.post('/shows', values).done(function(data) {
         console.log(data);
         const newShow = `
             <li><a href="shows/${data["id"]}">${data["name"]}</a></li>

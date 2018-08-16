@@ -46,6 +46,6 @@ Original Rails App/Project
 
 - Show Index Page
     -> Be able to tick a checkbox for "record this show" upon jQuery creation of it
-
+    -> Create new without page refresh -- it keeps rendering JSON instead of staying on page
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
