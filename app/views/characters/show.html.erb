@@ -2,7 +2,7 @@
   <%= javascript_include_tag 'characters' %>
 <% end %>
 
-<h3>Show Page for '<span><%= @character.name %></span>'</h3>
+<h3>Show Page for '<span class="char-header"><%= @character.name %></span>'</h3>
 
 <button id="previous-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Previous Character</button>
 <button id="next-char" data-id="<%= @character.id %>" data-show_id="<%= @character.show_id %>">Next Character</button>
@@ -16,4 +16,4 @@
 <p class="char-delete"><%= render partial: "delete", locals: {character: @character} %></p>
 
 <p>Character last updated on: <span class="char-last-updated"><%= @character.updated_at %></span></p>
-<p>Character has been viewed <span class="char-last-viewed"><%= @character.char_page_views %></span> times.</p>
+<p>Character has been viewed <span class="char-page-views"><%= @character.char_page_views %></span> times.</p>

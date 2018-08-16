@@ -43,13 +43,21 @@ function nextButtonClick(){
         console.log('Next Character Data = ', data);
     
         // Replace the current character data
-        // $(".authorName").text(data["author"]["name"]);
-        // $(".postTitle").text(data["title"]);
-        // $(".postBody").text(data["description"]);
+        $(".char-header").text(data["name"]);
+        $(".char-name").text(data["name"]);
+        $(".char-role").text(data["role"]);
+        $(".char-description").text(data["description"]);
         
+        $(".char-show").text(`<%= link_to ${data["show"]["name"]}, show_path(${data["show"]["id"]}) %>`);
+        $(".char-edit").text(`<%= link_to "Edit Character", edit_show_character_path(data["show"]["id"], data["id"]) %>`);
+        $(".char-delete").text(`<%= render partial: "delete", locals: {character: data} %>`);
+        
+        $(".char-last-updated").text(data["last-updated"]);
+        $(".char-page-views").text(data["char_page_views"]);
+
         // // Reset the button submittable ids
-        // $("#previous-char").attr("data-id", data["id"]);
-        // $("#next-char").attr("data-id", data["id"]);
+        $("#previous-char").attr("data-id", data["id"]);
+        $("#next-char").attr("data-id", data["id"]);
     });
 
 };
