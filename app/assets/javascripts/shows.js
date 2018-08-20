@@ -33,23 +33,40 @@ function formSubmit(event) {
     const values = $(this).serialize();
     $.post('/shows', values).done(function(data) {
         console.log(data);
-        const show = data;
-        show.info = function() {
-            return `
-            <li><a href="shows/${show.id}">${show.name}</a></li>
-            <ol>
-              <li>Has ${show.characters.length} characters.</li>
-              <li>Age requirement is ${show.req_age}.</li>
-              <li>Takes ${show.req_recording_hours} recording hours.</li>
-              <li>You are currently not recording this show.
-              </li>
-            </ol>
-            `;
-        };
+        
+        // Create new js model show object
+        const show = new Show(data);
         
         $('#all-shows').append(show.info());
     });
 };
+
+// Create new show (outside of the class syntax)
+function Show(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.req_recording_hours = data.req_recording_hours;
+    this.req_age = data.req_age;
+    this.description = data.description;
+    this.show_page_views = data.show_page_views;
+    this.characters = data.characters;
+}
+
+// Show js model object new method -- Use Prototype to prevent redefining function for each object
+Show.prototype.info = function () {
+    return `
+    <li><a href="shows/${this.id}">${this.name}</a></li>
+    <ol>
+      <li>Has ${this.characters.length} characters.</li>
+      <li>Age requirement is ${this.req_age}.</li>
+      <li>Takes ${this.req_recording_hours} recording hours.</li>
+      <li>You are currently not recording this show.
+      </li>
+    </ol>
+    `;
+};
+
+
 
 // Get show characters
 function getCharacters(){
