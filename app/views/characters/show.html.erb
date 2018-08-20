@@ -13,10 +13,6 @@
 <p>Affiliated Show: <span class="char-show"><%= link_to @character.show.name, show_path(@character.show) %></span></p>
 
 <p class="char-edit"><%= link_to "Edit Character", edit_show_character_path(@character.show, @character) %></p>
-<p class="char-delete">
-    <%= form_tag character_path(@character.id), method: "delete" do %>
-        <%= submit_tag "Delete Character" %>
-    <% end %></p>
 
 <p>Character last updated on: <span class="char-last-updated"><%= @character.updated_at %></span></p>
 <p>Character has been viewed <span class="char-page-views"><%= @character.char_page_views %></span> times.</p>

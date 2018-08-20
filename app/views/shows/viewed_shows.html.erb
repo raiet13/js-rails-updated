@@ -1,5 +1,10 @@
 <ul>
-    <% @shows.each do |show| %>
-    <li><%= show.name %>, <%= show.show_page_views %></li>
+    <% if @shows.length > 0 %>
+        <% @shows.each do |show| %>
+        <li><%= show.name %>, <%= show.show_page_views %></li>
+        <% end %>
+    <% else %>
+        <li>No Shows Viewed Yet</li>
+        <li><%= link_to "See All Shows", shows_path %></li>
     <% end %>
 </ul>

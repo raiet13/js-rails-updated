@@ -4,11 +4,11 @@
 <% if !logged_in? %>
     <p><%= link_to "Log In", login_path %></p>
     <p><%= link_to "Sign Up", signup_path %></p>
-    <p><%= link_to "Log in or Sign Up with Google", '/auth/google_oauth2' %></p>
+    <p><%= link_to "Sign Up with Google", '/auth/google_oauth2' %></p>
 
 <% else %>
     <p><%= link_to "Go To Your Profile", user_path(current_user) %></p>
     <p><%= link_to "See All Shows", shows_path %></p>
-    <p><%= link_to "See Most Viewed Characters By Show", most_viewed_characters_by_show_path %></p>
+    <p><%= link_to "See Viewed Shows", shows_viewed_shows_path %></p>
     
 <% end %>

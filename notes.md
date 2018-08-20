@@ -23,9 +23,6 @@ Original Rails App/Project
 
 - Make adjustments from Walkthrough to remove functionality that is not working 100% properly and has no bearing on the spec requirements.
 
-- Project Support
-    -> Create new show without page refresh -- it keeps rendering JSON instead of staying on page
-
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 - Nice to Haves - 

@@ -6,6 +6,7 @@ class Show < ApplicationRecord
   has_many :users, through: :recordings
   has_many :characters
 
+  # Class scope method
   scope :viewed_shows,   -> { where("show_page_views > 0") }
 
   def num_recordings
@@ -16,11 +17,6 @@ class Show < ApplicationRecord
     self.name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
   end
   
-  # Most viewed show for Class Scope Method
-  def self.most_viewed
-    self.by_views.first
-  end
-
   def self.by_views
     selected = self.select(:name, :id, :show_page_views).order(show_page_views: :desc)
     by_views_array = selected.to_a

@@ -73,9 +73,6 @@ class ShowsController < ApplicationController
   end
   
   # Class Scope Method
-  def most_viewed
-  end
-  
   def viewed_shows
     @shows = Show.viewed_shows
   end

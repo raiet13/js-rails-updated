@@ -149,17 +149,12 @@ function getReplaceCharacterData(id) {
         // Replace the current character data -- Functionality replacements requiring different handling
         $(".char-show").empty();
         $(".char-edit").empty();
-        $(".char-delete").empty();
         // console.log('Delete div = ', $(".char-delete")); // ****** WIP duplicated for some reason
         const charShowLink = `<a href="/shows/${data["show"]["id"]}">${data["show"]["name"]}</a>`;
         const charEditLink = `<a href="/shows/${data["show"]["id"]}/characters/${data["id"]}/edit">Edit Character</a>`;
-        const charDeleteLink = `<form action="/characters/${data["id"]}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="7V3GIg3BguJ2/bRRNJQfQw2HUwm4tU+YJoe1a6kYoLS1rZdhrigk6TUA9EaD9OHloH4bliT7wjfblyplknDnqQ==">
-            <input type="submit" name="commit" value="Delete Character">
-            </form>`;
         $(".char-show").append(charShowLink);
         $(".char-edit").append(charEditLink);
-        $(".char-delete").append(charDeleteLink);
-        
+
         // Reset the button submittable ids
         $("#previous-char").data("id", data["id"]);
         $("#next-char").data("id", data["id"]);
