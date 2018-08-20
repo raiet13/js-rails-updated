@@ -1,8 +1,8 @@
  /* global $ jQuery */
  
- let showChar = false;
+let showChar = false;
 
-$(document).ready(function(){
+$(document).ready(function (){
     console.log('Show Controller Page');
 
     // Set variables and reset state
@@ -10,7 +10,6 @@ $(document).ready(function(){
 
     // Attach Event Listeners
     attachListeners();
-
 });
 
 // Attach event listeners
