@@ -1,5 +1,10 @@
-<h3>Edit Character</h3>
+<h3>Edit Character : <%= @character.name %></h3>
 
 <%= link_to "Return to " + @show.name + "'s Page", show_path(@show) %>
 
 <%= render partial: "form", locals: {show: @show, character: @character} %>
+
+<p class="char-delete">
+    <%= form_tag character_path(@character.id), method: "delete" do %>
+        <%= submit_tag "Delete Character" %>
+    <% end %></p>
