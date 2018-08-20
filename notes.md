@@ -12,6 +12,7 @@ Original Rails App/Project
 
 - Main Commands For Project Testing -
 
+- rvm 2.3.4 --> to get C9 into the correct ruby version
 - If "Run" button not working -- Run Server -> "rails s -b $IP -p $PORT"
 
 
@@ -20,16 +21,10 @@ Original Rails App/Project
 
 - Next Steps - 
 
-- Use jQuery/ajax for TV show/characters
-    -> Show Page with "next" (cycle through all shows)
-    -> Index Page -> Automatically render all characters from show && click button to show all active user recordings on user profile
-    -> "has_many" == use the TV shows to render new characters without a redirect
-        -> Show the characters in a Show AND render new characters w/o redirect
+- Make adjustments from Walkthrough to remove functionality that is not working 100% properly and has no bearing on the spec requirements.
 
-- For complexity's sake in terms of views, updating above
-    -> Create new Shows on the show index page without refresh
-    -> Click "See all of show's character information" link/button on Show Page and render all characters there
-        https://learn.co/tracks/full-stack-web-development-v6/rails-and-javascript/using-ajax-and-rails/video-review-loading-comments-via-get-ajax
+- Project Support
+    -> Create new show without page refresh -- it keeps rendering JSON instead of staying on page
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -46,6 +41,6 @@ Original Rails App/Project
 
 - Show Index Page
     -> Be able to tick a checkbox for "record this show" upon jQuery creation of it
-    -> Create new without page refresh -- it keeps rendering JSON instead of staying on page
+    -> Alphabetized by name (on page refresh or navigation to it) -- newly created shows will just be appended "normally"
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
