@@ -4,6 +4,12 @@
 
 <h3>All Shows</h3>
 
+Functionality to be added
+- Create a button that when pressed will generate the below show list
+- Use JavaScript and get request for show index
+- Sort show index (in JavaScript) and append to the DOM
+<button id="sort-shows">Sort Shows</button>
+
 <ul id="all-shows">
   <% @shows.each do |show| %>
     <li><%= link_to show.name, show_path(show) %></li>

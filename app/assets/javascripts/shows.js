@@ -19,8 +19,40 @@ function attachListeners() {
     // Form Event Listener
     $('form').submit(formSubmit);
     $('.show-page-char-click').click(getCharacters);
-
+    $('#sort-shows').click(getShowListAndSort);
 };
+
+// Get show list and sort function
+function getShowListAndSort(event) {
+    console.log('get show list and sort shows');
+    
+    // Empty the show div
+    $('#all-shows').empty();
+    let sortedShows;
+    
+    // Get the show list, sort it, then render it to the DOM
+    $.getJSON( "/shows/", function( data ) {
+        console.log('Shows : ', data);
+        sortedShows = data.sort(function(a, b){return a.name.toLowerCase() > b.name.toLowerCase()});
+    }).done(function(data){
+        console.log('sort shows here')
+        console.log(sortedShows)
+        data.forEach((show) => {$('#all-shows').append(displayShow(show));})
+    });
+}
+
+// Return proper show index view
+function displayShow(show) {
+    return `
+    <li>${show.name}</li>
+    <ol>
+      <li>Has ${show.characters.count} characters.</li>
+      <li>Age requirement is ${show.req_age}.</li>
+      <li>Takes ${show.req_recording_hours} recording hours.</li>
+      <li>You are currently not recording this show.</li>
+    </ol>
+    `
+}
 
 // Create new show without page refresh
 function formSubmit(event) {
